@@ -42,17 +42,7 @@ function ProductList() {
                   className="w-32 h-32 object-contain mb-4"
                 />
 
-                <p>
-                  {product.description.slice(0, 55)}...
-                  {
-                    <Link
-                      to={`/product-detail/${product.id}`}
-                      className="text-blue-600 mr-4"
-                    >
-                      more
-                    </Link>
-                  }
-                </p>
+                <p>{product.description.slice(0, 60)}...</p>
 
                 <p className="mb-2">
                   <b>Price:</b> ₹{product.price}
