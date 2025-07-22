@@ -19,11 +19,7 @@ function Home() {
 
   return (
     <div className="p-4">
-      <input
-        type="text"
-        placeholder="Search Products , Brands and More..."
-        className="border-1 border-black border-solid rounded-sm p-1 w-lg h-10 "
-      />
+      
       <h2 className="text-2xl font-bold mb-4">Products</h2>
       {loading && <p className="text-blue-500">Loading....</p>}
       {error && <p className="text-red-500">{error}</p>}
