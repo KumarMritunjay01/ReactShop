@@ -19,7 +19,6 @@ function Home() {
 
   return (
     <div className="p-4">
-      
       <h2 className="text-2xl font-bold mb-4">Products</h2>
       {loading && <p className="text-blue-500">Loading....</p>}
       {error && <p className="text-red-500">{error}</p>}
@@ -28,42 +27,36 @@ function Home() {
         {products.map((product) => (
           <div
             key={product.id}
-            className="border-2 border-blue-400 m-2 w-72 h-[480px] flex flex-col justify-between p-4 rounded-lg shadow-md"
+            className="border-2 border-blue-400 m-2 max-w-65 max-h-100 flex flex-col justify-between p-4 rounded-lg shadow-md"
           >
             <Link to={`/product-detail/${product.id}`}>
-              <div>
+              <div className="flex justify-center flex-col items-center">
+                <div className="w-28  object-contain mb-4   border-0.5 border-yellow-50 border-solid rounded-sm p-2 border-y-indigo-50">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="rounded-lg "
+                  />
+                </div>
                 <h3 className="text-lg font-semibold text-center mb-2">
-                  {product.title.slice(0, 30)}...
+                  {product.title.slice(0, 20)}...
                 </h3>
-
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-32 h-32 object-contain mb-4"
-                />
-
-                <p>{product.description.slice(0, 60)}...</p>
-
                 <p className="mb-2">
-                  <b>Price:</b> ₹{product.price}
-                </p>
-
-                <p className="mb-2">
-                  <b>Rating:</b> {product.rating.rate} ({product.rating.count})
+                  <b>Price:</b> ${product.price}
                 </p>
               </div>
             </Link>
 
             <div className="flex mt-4 w-full">
               <button
-                className="w-1/2 border border-black h-10 hover:bg-gray-100"
+                className="w-1/2 border border-black h-10 hover:bg-gray-100 rounded-lg"
                 onClick={() => addToCartHandler(product)}
               >
                 {cartItem.some((item) => item.id === product.id)
                   ? "Go to cart"
                   : "Add to cart"}
               </button>
-              <button className="w-1/2 h-10 bg-amber-300 hover:bg-amber-400">
+              <button className="w-1/2 h-10 bg-amber-300 hover:bg-amber-400 ml-2 rounded-lg">
                 Buy now
               </button>
             </div>

@@ -11,7 +11,10 @@ function Navbar() {
      w-full h-18  italic mb-5 text-white"
     >
       <div className="ml-20 w-3/5 flex justify-acround items-center text-3xl font-semibold">
-        <Link to="/" className="mr-16">
+        <Link
+          to="/"
+          className="mr-16 border-2 border-white border-solid p-1.5 rounded-sm "
+        >
           ReactShop
         </Link>
       </div>
