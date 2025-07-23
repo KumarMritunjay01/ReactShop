@@ -10,6 +10,7 @@ function Home() {
   const { products, loading, error } = useSelector((state) => state.products);
   const { cartItem } = useSelector((state) => state.cartItem);
   const [searchText, setSearchText] = useState("");
+  const [selectCategory, setSelectCategory] = useState("");
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -20,13 +21,24 @@ function Home() {
   };
 
   // return filtered the product based on search
-  const filteredProducts = products.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const filteredProducts = products.filter((item) => {
+    const productMatechesBySearch = item.title
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+    const productMatechesByCategory =
+      selectCategory === "" ||
+      item.category === selectCategory.toLocaleLowerCase();
+    return productMatechesBySearch && productMatechesByCategory;
+  });
 
   return (
     <div className="p-4">
-      <SearchAndFilter searchText={searchText} setSearchText={setSearchText} />
+      <SearchAndFilter
+        searchText={searchText}
+        setSearchText={setSearchText}
+        selectCategory={selectCategory}
+        setSelectCategory={setSelectCategory}
+      />
       <h2 className="text-2xl font-bold mb-4">Products</h2>
       {loading && <p className="text-blue-500">Loading....</p>}
       {error && <p className="text-red-500">{error}</p>}

@@ -1,6 +1,11 @@
 import React from "react";
 
-function SearchAndFilter({ searchText, setSearchText }) {
+function SearchAndFilter({
+  searchText,
+  setSearchText,
+  selectCategory,
+  setSelectCategory,
+}) {
   return (
     <div>
       <input
@@ -10,7 +15,11 @@ function SearchAndFilter({ searchText, setSearchText }) {
         onChange={(e) => setSearchText(e.target.value)}
         className="border-1 border-black border-solid rounded-sm p-1 w-1/3 h-10 m-6 ml-40"
       />
-      <select className="w-1/3 border-1 border-black border-solid rounded-sm p-1  h-10">
+      <select
+        className="w-1/3 border-1 border-black border-solid rounded-sm p-1  h-10"
+        value={selectCategory}
+        onChange={(e) => setSelectCategory(e.target.value)}
+      >
         <option>Filter by category </option>
         <option>Men's Clothing</option>
         <option>Women's Clothing</option>
