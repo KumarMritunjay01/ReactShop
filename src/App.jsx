@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <SearchAndFilter />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product-detail?/:id" element={<ProductDetail />} />
