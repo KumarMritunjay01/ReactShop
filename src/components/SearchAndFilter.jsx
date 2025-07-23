@@ -1,11 +1,13 @@
 import React from "react";
 
-function SearchAndFilter() {
+function SearchAndFilter({ searchText, setSearchText }) {
   return (
     <div>
       <input
         type="text"
-        placeholder="Search Products , Brands and More..."
+        placeholder="Search Products With Name ...."
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
         className="border-1 border-black border-solid rounded-sm p-1 w-1/3 h-10 m-6 ml-40"
       />
       <select className="w-1/3 border-1 border-black border-solid rounded-sm p-1  h-10">

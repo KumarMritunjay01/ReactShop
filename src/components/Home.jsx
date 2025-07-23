@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../features/products/productSlice";
 import { addTodoCart } from "../features/cart/cartSlice";
 import { Link } from "react-router-dom";
+import SearchAndFilter from "./SearchAndFilter";
 
 function Home() {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
   const { cartItem } = useSelector((state) => state.cartItem);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -17,14 +19,20 @@ function Home() {
     dispatch(addTodoCart(product));
   };
 
+  // return filtered the product based on search
+  const filteredProducts = products.filter((item) =>
+    item.title.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <div className="p-4">
+      <SearchAndFilter searchText={searchText} setSearchText={setSearchText} />
       <h2 className="text-2xl font-bold mb-4">Products</h2>
       {loading && <p className="text-blue-500">Loading....</p>}
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             className="border-2 border-blue-400 m-2 max-w-65 max-h-100 flex flex-col justify-between p-4 rounded-lg shadow-md"
