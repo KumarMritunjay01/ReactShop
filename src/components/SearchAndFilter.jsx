@@ -18,13 +18,16 @@ function SearchAndFilter({
       <select
         className="w-1/3 border-1 border-black border-solid rounded-sm p-1  h-10"
         value={selectCategory}
+        placeholder="Filter by category"
         onChange={(e) => setSelectCategory(e.target.value)}
       >
-        <option>Filter by category </option>
-        <option>Men's Clothing</option>
-        <option>Women's Clothing</option>
-        <option>Jewelery</option>
-        <option>Electronics</option>
+        <option value="" disabled selected>
+          Filter by category{" "}
+        </option>
+        <option value="Men's Clothing">Men's Clothing</option>
+        <option value="Women's Clothing">Women's Clothing</option>
+        <option value="Jewelery">Jewelery</option>
+        <option value="Electronics">Electronics</option>
       </select>
     </div>
   );
