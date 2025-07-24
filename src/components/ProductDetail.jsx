@@ -37,8 +37,12 @@ function ProductDetail() {
         {/* Product Info */}
         <div className="space-y-4">
           <h1 className="text-3xl font-bold text-gray-800">{product.title}</h1>
-          <p className="text-gray-700 text-sm">{product.description}</p>
-          <p className="text-sm text-blue-500 uppercase">{product.category}</p>
+          <p className="text-gray-700 text-sm">
+            <b>Description :</b> {product.description}
+          </p>
+          <p className="text-sm text-blue-500 ">
+            <b>Category :</b> {product.category}
+          </p>
 
           <div className="flex gap-4 items-center mt-4">
             <p className="text-xl font-semibold text-green-600">
