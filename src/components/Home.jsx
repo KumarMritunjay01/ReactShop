@@ -62,7 +62,7 @@ function Home() {
                   {product.title.slice(0, 20)}...
                 </h3>
                 <p className="mb-2">
-                  <b>Price:</b> ${product.price}
+                  <b>Price:</b> $ {Math.floor(product.price)}
                 </p>
               </div>
             </Link>
