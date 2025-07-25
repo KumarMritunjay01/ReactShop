@@ -7,16 +7,16 @@ function SearchAndFilter({
   setSelectCategory,
 }) {
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full px-4 py-4 bg-white dark:bg-gray-900 text-black dark:text-white rounded-md shadow">
       <input
         type="text"
-        placeholder="Search Products With Name ...."
+        placeholder="Search Products With Name..."
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        className="border-1 border-black border-solid rounded-sm p-1 w-1/3 h-10 m-6 ml-40"
+        className="w-full h-10 px-4 py-2 border border-black dark:border-white rounded-md bg-white dark:bg-gray-800 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <select
-        className="w-1/3 border-1 border-black border-solid rounded-sm p-1  h-10"
+        className="w-full h-10 px-4 py-2 border border-black dark:border-white rounded-md bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={selectCategory}
         onChange={(e) => setSelectCategory(e.target.value)}
       >
