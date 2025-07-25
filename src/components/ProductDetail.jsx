@@ -19,7 +19,6 @@ function ProductDetail() {
 
   const addToCartHandler = (product) => {
     dispatch(addTodoCart(product));
-    console.log(product);
   };
 
   return (
