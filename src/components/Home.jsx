@@ -32,7 +32,7 @@ function Home() {
   });
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-gray-100">
       <SearchAndFilter
         searchText={searchText}
         setSearchText={setSearchText}
@@ -43,15 +43,15 @@ function Home() {
       {loading && <p className="text-blue-500">Loading....</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
             className="border-2 border-blue-400 m-2 max-w-65 max-h-100 flex flex-col justify-between p-4 rounded-lg shadow-md"
           >
             <Link to={`/product-detail/${product.id}`}>
-              <div className="flex justify-center flex-col items-center">
-                <div className="w-28  object-contain mb-4   border-0.5 border-yellow-50 border-solid rounded-sm p-2 border-y-indigo-50">
+              <div className="flex justify-center flex-col items-center hover:scale-105 ">
+                <div className="w-28  object-contain mb-4   border-0.5 border-yellow-50 border-solid rounded-sm p-2 border-y-indigo-50 ">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -69,14 +69,15 @@ function Home() {
 
             <div className="flex mt-4 w-full">
               <button
-                className="w-1/2 border border-black h-10 hover:bg-gray-100 rounded-lg"
+                className="w-1/2 border border-black h-10 dark:hover:bg-blue-500 text-black rounded-lg hover:scale-107 light:hover:bg-blue-200 cursor-pointer dark:active:bg-blue-600 
+"
                 onClick={() => addToCartHandler(product)}
               >
                 {cartItem.some((item) => item.id === product.id)
                   ? "Go to cart"
                   : "Add to cart"}
               </button>
-              <button className="w-1/2 h-10 bg-amber-300 hover:bg-amber-400 ml-2 rounded-lg">
+              <button className="w-1/2 h-10 bg-amber-300 hover:bg-amber-400 ml-2 rounded-lg cursor-pointer hover:scale-107">
                 Buy now
               </button>
             </div>
