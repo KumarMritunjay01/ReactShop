@@ -4,6 +4,7 @@ import { fetchProducts } from "../features/products/productSlice";
 import { addTodoCart } from "../features/cart/cartSlice";
 import { Link } from "react-router-dom";
 import SearchAndFilter from "./SearchAndFilter";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -11,16 +12,22 @@ function Home() {
   const { cartItem } = useSelector((state) => state.cartItem);
   const [searchText, setSearchText] = useState("");
   const [selectCategory, setSelectCategory] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
   const addToCartHandler = (product) => {
-    dispatch(addTodoCart(product));
+    const isExist = cartItem.some((item) => item.id === product.id);
+
+    if (isExist) {
+      navigate("/cart");
+    } else {
+      dispatch(addTodoCart(product));
+    }
   };
 
-  // return filtered the product based on search
   const filteredProducts = products.filter((item) => {
     const productMatechesBySearch = item.title
       .toLowerCase()
