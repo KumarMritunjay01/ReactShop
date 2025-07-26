@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   removeFromCart,
   addTodoCart,
@@ -12,16 +13,16 @@ function CartPage() {
   const { cartItem } = useSelector((state) => state.cartItem);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     let price = 0;
     cartItem.map((item) => {
       price += item.count * Math.floor(item.price);
     });
     setTotalPrice(price);
-  }, [current.count, current]);
-  console.log(cartItem);
+  }, [cartItem]);
 
-  useEffect(() => {}, [cartItem]);
   const dispatch = useDispatch();
 
   const increaseItemHandler = (id) => {
@@ -29,7 +30,13 @@ function CartPage() {
   };
 
   const decreaseItemHandler = (id) => {
-    dispatch(decreseItemCount(id));
+    const itemInCart = cartItem.filter((item) => item.id === id);
+    console.log(itemInCart);
+    if (itemInCart.count === 0) {
+      
+    } else {
+      dispatch(decreseItemCount(id));
+    }
   };
 
   return (
@@ -46,29 +53,34 @@ function CartPage() {
       {cartItem.length === 0 && <p>No items...</p>}
 
       {cartItem.map((item) => (
-        <div className="w-full h-full" key={item.id}>
-          <div className="w-full flex justify-between min-h-30 items-center ">
-            <div className="flex w-1/4 justify-around items-center">
-              <img src={item.image} alt={item.title} className="max-w-20" />
-              <h3 className="text-lg font-semibold text-center mb-2">
+        <div className="w-full space-y-4" key={item.id}>
+          <div className="w-full flex flex-wrap justify-between items-center bg-white shadow-md rounded-xl">
+            <div className="flex items-center w-full sm:w-1/4 space-x-4">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-16 h-16 object-contain"
+              />
+              <h3 className="text-lg font-semibold">
                 {item.title.slice(0, 20)}...
               </h3>
             </div>
-            <div className="w-1/4 items-center justify-center flex">
-              <b>Price: </b> $ {Math.floor(item.price)}
+            <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0">
+              <span className="font-semibold text-gray-700">Price:</span>
+              <span className="ml-2 text-black">${Math.floor(item.price)}</span>
             </div>
-            <div className="w-1/4 items-center justify-center flex">
-              <div className="flex w-1/4 h-8 justify-around border-1 border-black items-center rounded-sm">
+            <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0">
+              <div className="flex items-center border border-gray-400 rounded-lg overflow-hidden shadow-sm">
                 <button
-                  className="text-3xl cursor-pointer"
+                  className="text-2xl px-3 py-1 bg-gray-200 hover:bg-gray-300 disabled:opacity-50 cursor-pointer clsc"
                   onClick={() => decreaseItemHandler(item.id)}
-                  disabled={item.count === 1}
+                  disabled={item.count === 0}
                 >
                   -
                 </button>
-                <div>{item.count}</div>
+                <div className="px-4 py-1">{item.count}</div>
                 <button
-                  className="text-xl cursor-pointer"
+                  className="text-2xl px-3 py-1 bg-gray-200 hover:bg-gray-300 disabled:opacity-50 cursor-pointer"
                   onClick={() => increaseItemHandler(item.id)}
                   disabled={item.count === 5}
                 >
@@ -76,7 +88,7 @@ function CartPage() {
                 </button>
               </div>
             </div>
-            <div className="w-1/4 items-center justify-center flex">
+            <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0 text-lg font-semibold text-indigo-700">
               $ {Math.floor(Math.floor(item.price) * item.count)}
             </div>
             <hr />
@@ -85,15 +97,15 @@ function CartPage() {
         </div>
       ))}
 
-      <div className="w-full h-50 flex justify-end items-end mt-6 ">
-        <div className="w-1/4 h-full bg-indigo-100 m-4 p-5 flex flex-col rounded-xl">
-          <h1 className="text-xl font-semibold mb-2">Cart Total</h1>
-          <hr />
-          <div className="h-2/3 flex justify-between items-center text-xl ml-4 mr-4">
-            <h3 className="w-1/2">Sub total</h3>
-            <p className="flex w-1/2 justify-center">
-              $ {Math.floor(totalPrice)}
-            </p>
+      <div className="w-full flex justify-end mt-8">
+        <div className="w-full sm:w-1/3 bg-indigo-100 p-6 rounded-2xl shadow-md">
+          <h1 className="text-xl font-bold mb-4 text-indigo-800">Cart Total</h1>
+          <hr className="mb-4" />
+          <div className="flex justify-between text-lg mb-6">
+            <span className="font-medium text-gray-700">Subtotal</span>
+            <span className="font-semibold text-black">
+              ${Math.floor(totalPrice)}
+            </span>
           </div>
 
           <div className="bg-black text-white text-lg font-semibold w-full h-12 rounded-lg flex justify-center items-center cursor-pointer">
