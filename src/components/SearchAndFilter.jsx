@@ -7,7 +7,7 @@ function SearchAndFilter({
   setSelectCategory,
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full px-4 py-4 bg-white dark:text-white rounded-md shadow">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full px-4 py-4 bg-white dark:text-white rounded-md shadow mt-25">
       <input
         type="text"
         placeholder="Search Products With Name..."

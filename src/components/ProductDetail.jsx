@@ -23,7 +23,7 @@ function ProductDetail() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start bg-white p-6 rounded-lg shadow-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start bg-white p-6 rounded-lg shadow-lg mt-25">
         {/* Product Image */}
         <div className="flex justify-center">
           <img
