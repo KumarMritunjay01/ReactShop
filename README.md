@@ -33,44 +33,10 @@
 2. Redux Toolkit -> Global state
 3. Redux Thunk Middleware -> Async API Calls
 4. React Router -> Routing (Home , Cart , Products Detail)
-5. Axios or Fetch -> API Call
+5. Fetch -> API Call
 6. TailwindCss / CSS -> Styling
-
-# Suggested Folder Structure
-
-src/
-│
-├── app/
-│ └── store.js
-│
-├── features/
-│ ├── products/
-│ │ ├── productSlice.js
-│ │ └── ProductList.jsx
-│ ├── cart/
-│ │ ├── cartSlice.js
-│ │ └── Cart.jsx
-│
-├── components/
-│ ├── Navbar.jsx
-│ └── Loader.jsx
-│
-├── pages/
-│ ├── Home.jsx
-│ ├── ProductDetail.jsx
-│ └── CartPage.jsx
-│
-└── App.jsx
 
 # Bonus Feature Ideas (Optional)
 
-    -> Login (with dummy credentials or firebase)
     -> Dark Mode toggle
-    -> pagination or infinite scroll
     -> Order summary / total price calculation
-
-# Why is this project useful
-    -> Covers all core React concepts
-    -> Help you to master Redux + Thunk with real API
-    -> Give you a portfolio-worthly project
-    -> Shows understanding of full component structure , logic , and state management
