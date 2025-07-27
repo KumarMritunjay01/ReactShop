@@ -33,7 +33,6 @@ function CartPage() {
     const itemInCart = cartItem.filter((item) => item.id === id);
     console.log(itemInCart);
     if (itemInCart.count === 0) {
-      
     } else {
       dispatch(decreseItemCount(id));
     }
@@ -43,7 +42,7 @@ function CartPage() {
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Cart</h2>
       <hr />
-      <div className="flex justify-around h-12 w-full items-center text-xl font-semibold m-1">
+      <div className="flex justify-around h-12 w-full items-center text-xl font-semibold m-4">
         <h2>Product</h2>
         <h2>Price</h2>
         <h2>Quantity</h2>
@@ -69,12 +68,12 @@ function CartPage() {
               <span className="font-semibold text-gray-700">Price:</span>
               <span className="ml-2 text-black">${Math.floor(item.price)}</span>
             </div>
-            <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0">
+            <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0 flex-col">
               <div className="flex items-center border border-gray-400 rounded-lg overflow-hidden shadow-sm">
                 <button
                   className="text-2xl px-3 py-1 bg-gray-200 hover:bg-gray-300 disabled:opacity-50 cursor-pointer clsc"
                   onClick={() => decreaseItemHandler(item.id)}
-                  disabled={item.count === 0}
+                  disabled={item.count === 1}
                 >
                   -
                 </button>
@@ -87,7 +86,13 @@ function CartPage() {
                   +
                 </button>
               </div>
+              <span className="text-sm text-red-500">
+                {item.count === 5 ? (
+                  <p>Maximum limit crossed (Only 5 allowed)</p>
+                ) : null}
+              </span>
             </div>
+
             <div className="w-full sm:w-1/4 flex justify-center items-center mt-2 sm:mt-0 text-lg font-semibold text-indigo-700">
               $ {Math.floor(Math.floor(item.price) * item.count)}
             </div>
