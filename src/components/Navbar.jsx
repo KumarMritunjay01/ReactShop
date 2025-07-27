@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 function Navbar() {
+  const { cartItem } = useSelector((state) => state.cartItem);
+  const countOfItem = cartItem.length; // if cartItem is an array
+
   return (
-    <nav className="w-full flex flex-col sm:flex-row justify-between items-center px-4 py-3 bg-blue-950 text-white">
+    <nav className="w-full flex flex-col sm:flex-row justify-between items-center px-4 py-3 bg-blue-950 text-white fixed t-0 ">
       <div className="sm:ml-20 w-full sm:w-3/5 flex justify-center sm:justify-start items-center text-2xl sm:text-3xl font-semibold mb-3 sm:mb-0">
         <Link
           to="/"
@@ -24,9 +28,19 @@ function Navbar() {
         </Link>
         <Link
           to="/cart"
-          className="border-1 border-gray-500 text-white mr-3 px-4 py-1 rounded light:hover:bg-blue-100 transition duration-200 text-center w-24 dark:hover:text-2xl"
+          className=" text-white mr-3 px-4 py-1 rounded transition duration-200 text-center w-24 dark:hover:text-2xl"
         >
-          Cart
+          <div className="relative inline-block">
+            {/* Cart Icon */}
+            <FontAwesomeIcon icon={faCartPlus} size="2x" />
+
+            {/* Count Badge */}
+            {countOfItem > 0 && (
+              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                {countOfItem}
+              </span>
+            )}
+          </div>
         </Link>
       </div>
     </nav>
