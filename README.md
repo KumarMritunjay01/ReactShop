@@ -1,42 +1,50 @@
-// Project Idea : Product Store with Cart + API + API Integration
-// Project Name :- ReactShop (Simple E-commerce)
+# 🛒 ReactShop - Simple E-commerce Product Store
 
-# Features
+A simple e-commerce product store built with **React**, **Redux Toolkit**, and **Tailwind CSS**. This project showcases a cart system, product detail view, search/filter functionality, API integration, and global state management.
 
-1. Product Listing Page
-   -> Fetch Product from a fake API like "https://fakestoreapi.com"
-   -> Show products title , image , price , etc
+#  Features
 
-2. Cart System
-   -> Add to cart buttton
-   -> Show number of item in cart
-   -> Cart Page to View and remove products
+## 🛍 Product Listing Page
+- Fetch products from [FakeStore API](https://fakestoreapi.com)
+- Show product title, image, price, and other details
 
-3. Filter / Search
-   -> Search by product name
-   -> Filter by category (optional)
+### 🛒 Cart System
+- Add items to cart
+- Show total number of items in the navbar
+- Cart page to view and remove items
 
-4. Product Detail page
-   -> Click on product page -> show details info
+### 🔍 Filter / Search
+- Search products by name
+- Filter by category
 
-5. Global state using Redux toolkit
-   -> Product list
-   -> Cart items
-   -> Loading and error handling
+### 📄 Product Detail Page
+- Click any product to view detailed information
 
-6. Use Redux-Thunk for API Call
-   -> fetchProducts() , fetchProductById(id)
+### 🧠 Global State (Redux Toolkit)
+- Centralized state for:
+  - Product list
+  - Cart items
+  - Loading and error states
 
-# Tools/Libraries to Use
+### 🌐 API Integration
+- Async calls using Redux Thunk and native Fetch API:
+  - `fetchProducts()`
+  - `fetchProductById(id)`
 
-1. React -> for (UI)
-2. Redux Toolkit -> Global state
-3. Redux Thunk Middleware -> Async API Calls
-4. React Router -> Routing (Home , Cart , Products Detail)
-5. Fetch -> API Call
-6. TailwindCss / CSS -> Styling
+### 🌗 Other Features
+- Dark/Light mode toggle
+- Order summary with total price calculation
+- Fully responsive layout
 
-# Bonus Feature Ideas (Optional)
+---
 
-    -> Dark Mode toggle
-    -> Order summary / total price calculation
+## 🔧 Tech Stack
+
+| Technology      | Purpose                     |
+|------------------|------------------------------|
+| React            | UI Components                |
+| Redux Toolkit    | State Management             |
+| Redux Thunk      | Middleware for API Calls     |
+| Fetch API        | Product Data Fetching        |
+| React Router     | Routing Pages                |
+| Tailwind CSS     | Styling & Responsive Design  |
